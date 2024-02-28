@@ -1,4 +1,4 @@
-package ShadowsRPG;
+package ShadowsRPG.maps;
 
 public class RegionMap {
 }

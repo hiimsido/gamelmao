@@ -8,11 +8,21 @@ public class MainGame {
     static String[] CharacterSelect = {"archer", "mager", "knight", "initiate", "???", "???", "???", "???"};
 
 
+
     static ArrayList<String> Spells = new ArrayList<>();
-    static HashMap<String,Integer> Lmao = new HashMap<>();
+    static HashMap<String,Integer> Buffs = new HashMap<>();
+    static HashMap<String,Integer> Debuffs = new HashMap<>();
 
     public static int ATK, RNG, MAGE, DEF, AGIL, HP, MANA, LVL = 0; //base stats
-    public static int cATK, cRNG, cMAGE, cDEF, cAGIL, cHP, cMANA = 0 ; //current stats
+   // public static int cATK, cRNG, cMAGE, cDEF, cAGIL, cHP, cMANA = 0 ; //current stats
+
+    public static int CRIT = 10;
+
+    public static int cHP, cMANA = 0;
+
+    public static int[] coordinates;
+
+   // public static int[] coordinatesX = CombatMapC.mapRandomizePosition();
     public static int Coins = 0;
 
     {
@@ -21,14 +31,15 @@ public class MainGame {
 
     /*The States:
     Intro (Help menu with all information regarding mechanics and starting the game.
-    Character Select: Choose 1 of 7 different builds: Archer (Range Specialist), Mage (Magic Specialist), Knight (Melee Specialist) (These are the 3 well-rounded classes, might also have different unlocks as well meaning to get other classes, you have to beat the game with X requirements. Can allow for hints to unlock classes though), Assassin(High Mobility meaning 2 movement turns, High Damage, Low Defense), Tank(Reflect DMG and Absorption), the Shade (Powerful Magical Abilities, at the cost of health + mana), and the Heavy Artillery (Heavy Range Damage Class, but very immobile).
+    Character Select: Choose 1 of 7 different builds: Archer (Range Specialist), Mage (Magic Specialist), Knight (Melee Specialist) (These are the 3 well-rounded classes, might also have different unlocks as well meaning to get other classes, you have to beat the game with X requirements. Can allow for hints to unlock classes though), Assassin(High Mobility meaning 2 movement turns, High Damage, Low Defense), Bulwark(Reflect DMG and Absorption), the Shade (Powerful Magical Abilities, at the cost of health + mana), and the Heavy Artillery (Heavy Range Damage Class, but very immobile).
 
     (Each class starts off with different gear, wealth, weapons, armor, and abilities.)
 
     Expedition Prep: Before each expedition, you are given a chance to enter the store and purchase consumables. (may consider a backpack limit or something bc why not)
     Armory: Here you can buy new weapons and gear/equip yourself. Can also check your damage output on different enemy types. (Think about including durability, as a coding challenge, and decide what low durability does). After the first expedition, you also have a chance to find high tier weapons being sold, for a hefty price.
     Magic's Store: Able to learn/upgrade spells, and purchase magical equipment.
-    The Academy: A prestigious school, teaching you how to advance your skills. This is the best way to advance your base stats, at the cost of gold (goes up based on your base levels). Once your levels have reached a certain value, you can obtain mastery, which gives you a heavy boost in X stat, but it's incredibly expensive.
+    The Academy: A prestigious school, teaching you how to advance your skills. This is the best way to advance your base stats, at the cost of gold (goes up based on your base levels). Once your levels have reached a certain value, you can obtain mastery, which gives you a heavy boost in X stat, but it's incredibly expensive. (ex: academy training gives you base 10 pts, and an extra pt per level up. Some classes will start with level 5 regarding some stats like an archer will be level 5 in range).
+
     Expedition: Based on your progress thus far, you'll be sent out to expedition. Maps are generated based on region. Regions also have loot modifiers increasing your odds of gold/and findings.
     - Boss Cavern: Each expedition has a final encounter with a boss. It's never recommended to enter a boss Region first, and instead recommended you clear out everything in a region first, then engage in a boss encounter. Defeating a boss guarantees you a drop from the boss loot table.
     - Cavern: Caverns are gauntlets filled with many enemies, filled with lots of loot and experience, however your supplies can easily get drained, and you'll be put in combat scenarios where it's 1 against many. Completing a cavern grants you a guaranteed drop.
@@ -36,7 +47,8 @@ public class MainGame {
     - Forest/Animal Caverns: A way to replenish on food, but your agility will be tested based on the animals found.
     - Mystery Tiles: These tiles can be filled with loot or possibly a tough miniboss, so it's a gamble. 1% chance to enter the shadow realm unless a shadow gate key is present, which changes it to 100% chance. The shadow realm leads you to finding a shadow weapon.
     - Settlement: Every region doesn't always have to be filled with baddies, Settlements are ways to stock up on consumables, but the supply may be much limited then your normal store pre-expedition.
-    - The Forsaken One: A dark sinister being, who offers powerful things, in return for shadow gems or your stats. This can mean permanent debuffs to your health or other stats. However, he's also a trader, and will give you items of equal value in return for something extra (shadow gems). Important for rerolling for end-game tier items. Note, he will only appear by chance minus the final region, where you're guaranteed to encounter him.
+    - The Forsaken One: A dark sinister being,
+     who offers powerful things, in return for shadow gems or your stats. This can mean permanent debuffs to your health or other stats. However, he's also a trader, and will give you items of equal value in return for something extra (shadow gems). Important for rerolling for end-game tier items. Note, he will only appear by chance minus the final region, where you're guaranteed to encounter him.
     Expedition End: Shows your spoils, and you're rewarded for completing an expedition, ending off of slaying the region boss.
     ??? Tiles: Unknown.
     Ending: After completing the final region.
@@ -49,7 +61,7 @@ public class MainGame {
    - Basic Stats -
     Archery: Affects damage and range accuracy.
     Melee: Affects damage and melee accuracy.
-    Magic: Affects damage, and magic accuracy/curse accuracy. As well as magic defense.
+    Magic: Affects damage, and magic accuracy/curse accuracy. As well as magic defense. For curses, can use the MDR formula in RS.
     Defense: Defense against physical attacks.
     Health: How much damage you can take.
     Agility: Agility affects movement and your ability to dodge attacks, as well as slaying animals for food.
@@ -74,6 +86,7 @@ public class MainGame {
   Shock: Shock damage is powerful, going through defense and bringing down enemy mobility.
   Bleed: Bleeds are powerful in the sense that they can stack/be refreshed, meaning you can cause multiple bleeds. Can be treated with supplies.
   Poison: Poison starts of weak, and gets stronger per turn. Severe cases of poison will reduce combat prowess, and based on the enemy/yourself, can be cured after enough time passes, but this is based on severity. Severe poison can last for long, long, periods of time, and you may find yourself better off curing yourself instead of dice rolling.
+  Blind: Affects accuracy. Dropping down to 50%.
   Stun: Stuns will take away a whole turn of movement and combat. Only by the player, bosses, and minibosses.
 
   Modifiers/Attributes: Some enemies have found themselves embracing the very debuffs, applying them easily onto you, whilst also finding themselves resistant. Bosses will have natural resistance to debuffs but will still be partially affected by them (for example, they can't be frozen, but will still be frosted). (AKA Boss Attribute)
@@ -127,7 +140,7 @@ Region exclusive structures: Some regions may have different distractions: for e
     */
     }
     static void runGame(){
-        System.out.println("Welcome to the JavaRPG. Let's start off by asking, what is your name?");
+        System.out.println("Welcome to the Shadows Of Hegolia. Let's start off by asking, what is your name?");
         Scanner trackRes = new Scanner(System.in);
         String decision = "";
         String[] introText = {"So, our land was once beautiful and filled with life across the regions",
@@ -185,7 +198,8 @@ Region exclusive structures: Some regions may have different distractions: for e
 
         }
         while (!yourOptions.contains(pClass));
-        ClassStart.START(pClass);
+        Player player = new Player();
+        ClassStart.START(pClass,player);
         System.out.println("Ah so your a " + pClass + " Well, let's not waste more time, prepare yourself for the expedition!");
         System.out.println();
 
