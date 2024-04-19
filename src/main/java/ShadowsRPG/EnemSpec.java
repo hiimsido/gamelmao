@@ -86,6 +86,10 @@ public class EnemSpec {
 
         }
 
+       else if (attack.equalsIgnoreCase("Chomp")){
+           each.StoredExtraCondition.add("Rest");
+       }
+
 
         //write code to kill anything in the path of the Bulwark creature. Would be cool.
    else     if (attack.equalsIgnoreCase("Bulwark Charge")) {
@@ -97,22 +101,25 @@ public class EnemSpec {
             int X = each.getCoord()[1];
             int Y = each.getCoord()[0];
 
+            int oldX = X;
+            int oldY = Y;
+
 
             if (pY == Y) {
                 if (X > pX) {
                     pX = 0;
                     X = 1;
                 } else if (X < pX) {
-                    pX = 6;
-                    X = 5;
+                    pX = CombatMapC.combatMap[0].length-1;
+                    X = CombatMapC.combatMap[0].length-2;
                 }
             } else if (pX == X) {
                 if (Y > pY) {
                     pY = 0;
                     Y = 1;
                 } else if (Y < pY) {
-                    pY = 6;
-                    Y = 5;
+                    pY = CombatMapC.combatMap.length - 1;
+                    Y = CombatMapC.combatMap.length - 2;
                 }
             }
 
@@ -133,13 +140,13 @@ public class EnemSpec {
                     int bY = coords[0];
 
                     if (pX == X && bX == X) {
-                        if (pY > bY && bY < Y) {
+                        if (pY <= bY && bY < oldY) {
                             System.out.println("An enemy was in the path of the Bulwark's Charge!");
                             b.cHP = 0;
                             continue;
                         }
 
-                        if (pY < bY && bY > Y) {
+                        if (pY >= bY && bY > oldY) {
                             System.out.println("An enemy was in the path of the Bulwark's Charge!");
                             b.cHP = 0;
                             continue;
@@ -148,13 +155,13 @@ public class EnemSpec {
                     }
 
                     if (pY == Y && Y == bY) {
-                        if (pX > bX && bX < X) {
+                        if (pX <= bX && bX < oldX) {
                             System.out.println("An enemy was in the path of the Bulwark's Charge!");
                             b.cHP = 0;
                             continue;
                         }
 
-                        if (pX < bX && bX > X) {
+                        if (pX >= bX && bX > oldX) {
                             System.out.println("An enemy was in the path of the Bulwark's Charge!");
                             b.cHP = 0;
                         }

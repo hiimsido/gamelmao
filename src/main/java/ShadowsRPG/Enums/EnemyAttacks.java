@@ -89,7 +89,7 @@ public enum EnemyAttacks {
 
     Frostbreath("Frostbreath",1, "MAGE", .25,4, "None", "Freeze","None",0, 0,25, "None",3,1,80,false,0,1.0,"Ice"),
 
-    Bulwark_Charge("Bulwark Charge",2, "MELEE", 1.2,1, "None", "Stun","Vulnerable",0, 99,100, "Bulwark Charge",2,200,100000,true,3,1.0,"None"),
+    Bulwark_Charge("Bulwark Charge",3, "MELEE", 1.2,1, "None", "Stun","Vulnerable",0, 99,100, "Bulwark Charge",2,2000,100000,true,3,1.0,"None"),
 
     Bulwark_Roar("Bulwark Roar",6, "SELF", 1,1, "Bulk", "None","Immobile",3, 99,0, "None",2,1,0,true,2,1.0,"None"),
 
@@ -105,10 +105,12 @@ public enum EnemyAttacks {
 
     Quake("Quake",0, "SPECIAL", 1,1, "None", "None","None",0, 0,100, "Resting",0,300,0,false,3,1.0,"None"),
 
-    Chomp("Chomp",1, "MELEE", 1.3,1, "None", "None","None",0, 0,100, "None",1,2,0,false,2,1.0,"None"),
+    Chomp("Chomp",1, "MELEE", 1.3,1, "None", "None","None",0, 0,100, "None",1,2,0,true,2,1.0,"None"),
 
     Lunge("Lunge",1, "MELEE", 1,1, "None", "None","None",0, 1,20, "None",0,1.2,0,false,0,1.0,"None"),
+    Swordsdance("Swordsdance",5, "SELF", 1,1, "Swordsdance", "None","None",2, 1,20, "None",5,1.0,0,false,0,1.0,"None"),
 
+    Slice_And_Dice("Slice And Dice",3, "MELEE", .2,5, "None", "None","None",0, 1,30, "Swordsdance",0,1.0,0,false,0,1.5,"None"),
 
     Ballista_Shot("Ballista Shot",0, "RANGE", 1,1, "None", "None","None",0, 0,100, "Loaded",0,200,0,false,0,1.0,"None"),
 

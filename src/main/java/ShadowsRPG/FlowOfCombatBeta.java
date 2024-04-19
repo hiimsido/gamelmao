@@ -95,7 +95,7 @@ public class FlowOfCombatBeta {
         player.coordinates = CombatMapC.mapRandomizePosition();
         player.calcGear();
         player.statCalc();
-        enemySpawner.addBoss(1);
+        enemySpawner.addBoss(0);
         enemySpawner.addEnemy(3);
 
 
@@ -193,7 +193,7 @@ public class FlowOfCombatBeta {
 
                     if (!val.Debuffs.containsKey("Immobile")&&!val.ExtraCondition.contains("Rest")) {
                         val.Coordinates = enemyMovementBeta.enemymapStart((int) ((val.AGIL + val.TemporaryStats.get("AGIL")) * (1 + val.TemporaryMultiplier.get("AGILmod"))), "none", val.getCoord(), val.getAI(), val.DIST, val.Name, player, val);
-                        System.out.println(val.Name + " Has moved to " + Arrays.toString(val.Coordinates));
+                       // System.out.println(val.Name + " Has moved to " + Arrays.toString(val.Coordinates));
                     }
 
                     else if (val.ExtraCondition.contains("Rest"))
@@ -240,7 +240,7 @@ public class FlowOfCombatBeta {
                     DeBuffs.enemybuff(val);
                 }
 
-                if (!val.getTemporaryWeakness().isEmpty()||!player.getTemporaryResistances().isEmpty())
+                if (!val.getTemporaryWeakness().isEmpty()||!val.getTemporaryResistances().isEmpty())
                 {
                     WeakRes.enemy(val);
                 }

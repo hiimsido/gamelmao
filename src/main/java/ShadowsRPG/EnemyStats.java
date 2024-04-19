@@ -10,7 +10,7 @@ import ShadowsRPG.maps.enemyMovementBeta;
 import java.util.*;
 
 public class EnemyStats {
-        String Name;
+        public String Name;
 
         int[] formerPlayerLoc;
 

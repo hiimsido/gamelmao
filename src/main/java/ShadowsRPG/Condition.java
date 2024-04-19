@@ -18,7 +18,7 @@ public class Condition {
 
         if (condition.equalsIgnoreCase("Arrow"))
         {
-            return  player.WornEquipment.get("Arrows").toLowerCase().contains("arrow");
+            return  player.WornEquipment.get("Arrows").toLowerCase().contains("arrow")&&player.getWornEquipment().get("Bow").toLowerCase().contains("bow");
         }
 
         return false;

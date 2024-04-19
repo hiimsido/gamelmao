@@ -510,14 +510,18 @@ if (a.getType().equalsIgnoreCase("MELEE")) {
                                 continue;
                             }
 
-                                if (!a.getWeakness().equalsIgnoreCase("none")||b.getTemporaryWeakness().containsKey("All")||b.getResistances().contains("All"))
-                                {
+                                if (!a.getWeakness().equalsIgnoreCase("none")||b.getTemporaryWeakness().containsKey("All")) {
 
-                                    if (b.getWeakness().contains(a.getWeakness())||b.getTemporaryWeakness().containsKey(a.getWeakness())||b.getWeakness().contains("All")||b.getTemporaryWeakness().containsKey("All"))
-                                    {
+                                    //add a new code snippet to ignore if your attack is set to none regarding weaknesses.
+
+                                    if (b.getWeakness().contains(a.getWeakness()) || b.getTemporaryWeakness().containsKey(a.getWeakness()) || b.getWeakness().contains("All") || b.getTemporaryWeakness().containsKey("All")) {
                                         System.out.println("The target is weak to your attack!");
-                                        Damage*=2;
+                                        Damage *= 2;
                                     }
+                                }
+
+                                if (!a.getWeakness().equalsIgnoreCase("none")||b.getResistances().contains("All"))
+                                {
 
                                     if (b.getResistances().contains(a.getWeakness())||b.getTemporaryResistances().containsKey(a.getWeakness())||b.getResistances().contains("All")||b.getTemporaryResistances().containsKey("All"))
                                     {
@@ -533,11 +537,13 @@ if (a.getType().equalsIgnoreCase("MELEE")) {
                                 int dmgchange = 0;
                                 if (b.getResistances().contains(bane)||b.getTemporaryResistances().containsKey(bane))
                                 {
+                                    System.out.println("Your weapons bane improves your damage!");
                                     dmgchange = - Damage/5;
                                 }
 
                                 if (b.getWeakness().contains(bane)||b.getTemporaryWeakness().containsKey(bane))
                                 {
+                                    System.out.println("The bane of your weapon is weak against the enemy!");
                                     dmgchange = Damage/5;
                                 }
 
@@ -591,12 +597,12 @@ if (a.getType().equalsIgnoreCase("MELEE")) {
                                             b = enemy;
                                             if (i < a.getCount() - 1) {
                                                 System.out.println("With the enemy dead, you swap targets!");
+                                                primaryTarget = true;
+                                                targetinsight = each;
                                             }
-                                            targetinsight = each;
+
                                             break;
 
-                                        } else {
-                                            break;
                                         }
 
 
@@ -606,11 +612,13 @@ if (a.getType().equalsIgnoreCase("MELEE")) {
                                 } else {
                                     break;
                                 }
+
+                                if (!primaryTarget) {
+                                    break;
+                                }
                             }
 
-                            if (!primaryTarget) {
-                                continue;
-                            }
+
 
 
                             if (!debuff.equalsIgnoreCase("None")) {

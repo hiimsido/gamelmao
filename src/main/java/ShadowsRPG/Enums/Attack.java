@@ -30,7 +30,7 @@ public enum Attack {
 
     Stab("Stab",0, "MELEE", 1, "None", "Bleed",0, 0,0,.7,0,1,3,80, false,"None",0,"None",1.0,"Stab"),
 
-    Crippling_Arrows("Crippling Arrows",0, "RANGE", 3, "None", "Crippled",0, 0,0,.33,0,.7,3,100, false,"None",0,"None",1.0,"None"),
+    Crippling_Arrows("Crippling Arrows",0, "RANGE", 3, "None", "Crippled",0, 0,0,.33,0,.7,3,100, false,"None",0,"Arrow",1.0,"None"),
 
 
     Slam("Slam",0, "MELEE", 1, "None", "Stun",0, 0,0,.75,0,1,0,60, false,"None",0,"None",1.0,"Crush"),

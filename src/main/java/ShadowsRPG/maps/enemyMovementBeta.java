@@ -536,6 +536,7 @@ public class enemyMovementBeta extends CombatMapC {
          }
 
             mapDisplay();
+         System.out.println(E.Name + " Has moved to [" + Y + "," + X + "].");
             return new int[] {Y,X};
 
 

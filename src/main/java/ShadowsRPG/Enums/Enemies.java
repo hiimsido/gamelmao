@@ -45,6 +45,12 @@ public enum Enemies {
 
     Hardened_Knight("Hardened Knight", 10, 400, 250, 220, 30, 80, 15,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Smash","Slash"},0,0,"Heavy", new String[]{"None"}, new String[]{"None"}),
 
+    //make a enemy minotaur/centaur/horse riding knight with a charge attack, similar to bulwark, but without the stun, knocks you back 1 tile.
+
+    Elder_Knight("Elder Knight", 5, 1500, 600, 500, 70, 50, 20,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Smash","Slash"},0,0,"Elite_Heavy", new String[]{"None"}, new String[]{"None"}),
+
+    Swordmaster("Swordmaster", 1000, 2500, 200, 800, 70, 180, 25,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Swordsdance","Slice_And_Dice","Slash"},0,0,"Elite", new String[]{"None"}, new String[]{"None"}),
+
         Elite_Archer("Elite Archer", 20, 200, 10, 100, 10, 200, 5,0,100,3,0,"None", "None", 0, "RANGE", "Human" , new String[]{"Arrow_Rain","Arrow_Shot"},0,0,"Elite", new String[]{"None"}, new String[]{"None"}),
 
     Rogue_Mage("Rogue Mage", 20, 200, 10, 20, 130, 100, 5,0,100,3,0,"None", "None", 0, "RANGE", "Human" , new String[]{"Arcane_Bolt"},0,0,"Standard", new String[]{"None"}, new String[]{"None"}),
@@ -56,9 +62,9 @@ public enum Enemies {
 
         The_Dreadnought("The Dreadnought", 10, 1500, 300, 400, 10, 20, 10,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Crushing_Blow","Crush"},0,0,"Elite_Heavy", new String[]{"None"}, new String[]{"None"}),
 
-        Gargoyle("Gargoyle", 15, 200, 300, 100, 60, 200, 12,20,100,1,0,"None", "None", 0, "MELEE", "Stone" , new String[]{"Slash","Rock_Toss"},0,0,"Stone", new String[]{"Fire"}, new String[]{"Crush","Acid","Stone"}),
+        Gargoyle("Gargoyle", 15, 200, 300, 100, 60, 200, 12,20,100,1,0,"None", "None", 0, "MELEE", "Stone" , new String[]{"Slash","Rock_Toss"},0,0,"Stone", new String[]{"Fire"}, new String[]{"Crush","Acid"}),
 
-    Ancient_Colossus("Ancient Colossus", 5, 3000, 300, 500, 60, 10, 20,50,300,1,0,"None", "None", 0, "MELEE", "Stone" , new String[]{"Slash","Rock_Toss"},0,0,"Stone", new String[]{"Fire"}, new String[]{"Crush","Acid","Stone"}),
+    Ancient_Colossus("Ancient Colossus", 5, 3000, 300, 500, 60, 10, 20,50,300,1,0,"None", "None", 0, "MELEE", "Stone" , new String[]{"Slash","Rock_Toss"},0,0,"Stone", new String[]{"Fire"}, new String[]{"Crush","Acid"}),
 
     Ogre("Ogre", 15, 1200, 80, 350, 200, 10, 12,0,10,1,0,"None", "None", 0, "MELEE", "Ogre" , new String[]{"Consume","Just_Desserts","Smash",},0,0,"Heavy", new String[]{"None"}, new String[]{"Slash"}),
 
@@ -72,12 +78,12 @@ public enum Enemies {
 
     Frost_Dragon("Frost Dragon", 5, 2400, 300, 500, 500, 100, 12,0,0,1,0,"None", "None", 0, "MELEE", "Dragon" , new String[]{"Frostbreath","Bite","Slash"},0,0,"Dragon", new String[]{"Ice"}, new String[]{"Stab","Dragon"}),
 
-        The_Shield_Of_Karasawa("The Shield Of Karasawa", 10, 500, 300, 60, 10, 0, 5,40,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Karasawa_Slam"},0,0,"Elite_Heavy", new String[]{"None"}, new String[]{"None"}),
+        The_Shield_Of_Karasawa("The Shield Of Karasawa", 10, 500, 300, 60, 10, 0, 5,40,0,1,20,"None", "None", 0, "MELEE", "Human" , new String[]{"Karasawa_Slam"},20,0,"Elite_Heavy", new String[]{"None"}, new String[]{"None"}),
 
         Ballista_Archer("Ballista Archer", 10, 300, 20, 50, 10, 50, 25,0,250,5,0,"None", "None", 0, "RANGE", "Human" , new String[]{"Ballista_Shot", "Load_Ballista"/*,"Teleport"*/,"Crossbow_Shot"},0,0,"Standard", new String[]{"None"}, new String[]{"None"}), //eventually make a rule where it can only attack if 5 tiles away
     //give heavy archer's a teleport attack if they can't use ballista shot. With a cooldown
         //conditions return a boolean based on what the condition is
-
+    Elite_Ballista("Elite Ballista", 5, 1000, 200, 50, 120, 100, 25,0,500,5,0,"None", "None", 0, "RANGE", "Human" , new String[]{"Ballista_Shot", "Load_Ballista"/*,"Teleport"*/,"Crossbow_Shot"},0,0,"Elite", new String[]{"None"}, new String[]{"None"}),
 
 
         Madman("Madman", 15, 400, 40, 350, 10, 120, 35,0,100,1,0,"None", "None", 0, "MELEE","Human" , new String[]{"Berserk","Berserker_Barrage","Berserker_Slash","Strike","Axe_Throw",},0,0,"Standard", new String[]{"None"}, new String[]{"None"}),
@@ -122,9 +128,9 @@ public enum Enemies {
 
     Imp("Imp", 20, 150, 60, 150, 130, 120, 10,0,1,1,0,"None", "None", 0, "MELEE", "Demon" , new String[]{"Slash","Arcane_Bolt"},0,0,"Standard", new String[]{"Fire"}, new String[]{"Demonbane"}),
 
-   Elder_Demon("Elder Demon", 5, 800, 230, 260, 260, 180, 15,0,1,1,0,"None", "None", 0, "MELEE", "Demon" , new String[]{"Hellfire_Surge", "Demonic_Ritual","Slash","Hellfire_Blast"},0,0,"Demon", new String[]{"None"}, new String[]{"Demonbane"}),
+   Elder_Demon("Elder Demon", 5, 800, 230, 260, 260, 180, 15,0,1,1,0,"None", "None", 0, "MELEE", "Demon" , new String[]{"Hellfire_Surge", "Demonic_Ritual","Slash","Hellfire_Blast"},0,0,"Demon", new String[]{"Fire"}, new String[]{"Demonbane"}),
 
-        The_Armor_Piercer("The Armor Piercer", 20, 200, 170, 100, 0, 60, 100,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Penetrate"},0,0,"Heavy", new String[]{"None"}, new String[]{"None"}),
+        The_Armor_Piercer("The Armor Piercer", 10, 1200, 300, 300, 0, 120, 100,0,0,1,0,"None", "None", 0, "MELEE", "Human" , new String[]{"Penetrate"},0,0,"Heavy", new String[]{"None"}, new String[]{"None"}),
 
         Bear("Bear", 10, 400, 20, 250, 0, 160, 10,0,0,1,0,"None", "None", 0, "MELEE", "Beast", new String[]{"Bite","Slash"},0,0,"Heavy", new String[]{"None"}, new String[]{"None"}),
 
@@ -135,7 +141,11 @@ public enum Enemies {
     Spider_Queen("Spider Queen", 1, 2000, 40, 150, 10, 200, 10,0,150,1,0,"BOSS", "None", 0, "MELEE", "Spider" , new String[]{"Hatch_Spider","Web_Encasement","Spider_Bite","Lunge",},0,0,"Elite", new String[]{"None"}, new String[]{"None"}),
 
     Dwarf_Captain("Dwarf Captain", 1, 3450, 200, 200, 10, 120, 10,0,100,1,0,"BOSS", "None", 0, "ALLY", "Dwarf" , new String[]{"Dwarf_Reinforcements","Dwarf_Rally","Grenade_Blast","Strike","Pistol_Shot"},0,0,"Dwarf_Captain", new String[]{"None"}, new String[]{"Lightning"}),
-    The_Bulwark("The Bulwark", 1, 6000, 600, 200, 10, 10, 10,50,200,1,0,"BOSS", "None", 0, "BULWARK", "Beast",new String[]{"Bulwark_Charge",/*"Bulwark_Gaze",*/"Earthquake","Quake","Chomp","Bulwark_Stomp","Bulwark_Roar",},0,0, "Bulwark", new String[]{"None"}, new String[]{"None"})
+    The_Bulwark("The Bulwark", 1000, 6000, 600, 200, 10, 10, 10,50,200,1,0,"BOSS", "None", 0, "BULWARK", "Beast",new String[]{"Bulwark_Charge",/*"Bulwark_Gaze",*/"Earthquake","Quake","Chomp","Bulwark_Stomp","Bulwark_Roar",},0,0, "Bulwark", new String[]{"None"}, new String[]{"None"}),
+
+    UNIT_K117("UNIT K117", 0, 4444, 800, 600, -200, 10, 30,50,600,1,0,"BOSS", "None", 0, "MELEE", "ROBOT",new String[]{"Nanomachines","Energy_Shield","Chainsaw","Chaingun","Laserbeam",},0,0, "Bulwark", new String[]{"None"}, new String[]{"None"})
+
+
 
         ;
 

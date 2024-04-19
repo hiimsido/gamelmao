@@ -276,13 +276,14 @@ public class enemyAttackBeta {
                         continue;
                     }
 
-                    if (!each.getWeakness().equalsIgnoreCase("None")||player.getTemporaryWeakness().containsKey("All")||player.getTemporaryResistances().containsKey("All"))
-                    {
-                        if (player.getTemporaryWeakness().containsKey(each.getWeakness())||player.getTemporaryWeakness().containsKey("All"))
-                        {
-                            Damage*=2;
+                    if (!each.getWeakness().equalsIgnoreCase("None")||player.getTemporaryWeakness().containsKey("All")) {
+                        if (player.getTemporaryWeakness().containsKey(each.getWeakness()) || player.getTemporaryWeakness().containsKey("All")) {
+                            Damage *= 2;
                         }
 
+                    }
+
+                    if (!each.getWeakness().equalsIgnoreCase("None")||player.getTemporaryResistances().containsKey("All")){
                         if (player.getTemporaryResistances().containsKey(each.getWeakness())||player.getTemporaryResistances().containsKey("All"))
                         {
                             Damage/=2;
