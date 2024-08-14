@@ -27,6 +27,8 @@ import java.util.TreeMap;
 //Maybe unlist any moves with MULTIPLE options which have already been gone through.
 
 //figure out a way to not delete fallbacks if they still have enough moves, so instead of deleting @ fallback, recalc possible moves then delete if only 1 possible move makeable/distance is < 1
+
+//ideas: when it makes a fallback, have it mark up all possible moves, remove from pool of movements once all possible moves have been passed through.
 public class ratMazeV2 {
 
     public static void backtrackalpha()
@@ -101,15 +103,15 @@ public class ratMazeV2 {
     static String[][] Map = {
 
 
-            /*{"X","#","_","_","#","_","_",},
+            {"X","#","_","_","#","_","_",},
             {"_","_","_","#","_","#","_",},
-            {"_","#","#","#","#","#","#",},
-            {"_","_","_","_","_","_","_",},*/
+            {"_","#","_","#","#","#","#",},
+            {"_","#","_","_","#","_","_",},
 
-            {"X","_","_","_","_","_","_",},
+          /*  {"X","_","_","_","_","_","_",},
             {"_","_","_","_","_","_","_",},
             {"_","_","_","_","_","_","_",},
-            {"_","_","_","_","_","_","_",},
+            {"_","_","_","_","_","_","_",}, */
 
 
            /* {"X"},
@@ -307,7 +309,7 @@ public class ratMazeV2 {
             System.out.println(Loc[0] + " " + Loc[1]);
 
             allSteps.put(allSteps.size(), new int[]{Loc[0], Loc[1]});
-            if (distance.size() > 1 && !test) {
+            if (!distance.isEmpty()) {
 
                 if (!Arrays.equals(Loc,target))
                 {
