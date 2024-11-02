@@ -95,8 +95,8 @@ public class FlowOfCombatBeta {
         player.coordinates = CombatMapC.mapRandomizePosition();
         player.calcGear();
         player.statCalc();
-        enemySpawner.addBoss(0);
-        enemySpawner.addEnemy(3);
+        enemySpawner.addBoss(1);
+        enemySpawner.addEnemy(0);
 
 
         while (!enemySpawner.Enemy.isEmpty() && player.cHP > 0) {
